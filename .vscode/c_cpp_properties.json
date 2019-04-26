@@ -1,0 +1,30 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "defines": [
+                "ARDUINO=10800"
+            ],
+            "includePath": [
+                "${workspaceRoot}",
+                "D:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\**",
+                "D:\\Program Files (x86)\\Arduino\\tools\\**",
+                "D:\\Program Files (x86)\\Arduino\\hardware\\tools\\**",
+                "D:\\Program Files (x86)\\Arduino\\hardware\\**",
+                "D:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\cores\\arduino\\**",
+                "C:\\Users\\Jura\\Documents\\Arduino\\hardware\\tools\\**",
+                "C:\\Users\\Jura\\Documents\\Arduino\\libraries\\**",
+                "C:\\Users\\Jura\\Documents\\Arduino\\libraries\\USB_Host_Shield_Library_2.0",
+                "${workspaceRoot}"
+            ],
+            "forcedInclude": [
+                "D:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\cores\\arduino\\Arduino.h"
+            ],
+            "intelliSenseMode": "msvc-x64",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "compilerPath": "C:/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/cl.exe"
+        }
+    ],
+    "version": 4
+}
