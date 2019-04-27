@@ -7,14 +7,13 @@
             ],
             "includePath": [
                 "${workspaceRoot}",
-                "D:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\**",
-                "D:\\Program Files (x86)\\Arduino\\tools\\**",
-                "D:\\Program Files (x86)\\Arduino\\hardware\\tools\\**",
-                "D:\\Program Files (x86)\\Arduino\\hardware\\**",
-                "D:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\cores\\arduino\\**",
-                "C:\\Users\\Jura\\Documents\\Arduino\\hardware\\tools\\**",
+                "D:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\*",
+                "D:\\Program Files (x86)\\Arduino\\tools\\*",
+                "D:\\Program Files (x86)\\Arduino\\hardware\\tools\\*",
+                "D:\\Program Files (x86)\\Arduino\\hardware\\*",
+                "D:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\cores\\arduino\\*",
                 "C:\\Users\\Jura\\Documents\\Arduino\\libraries\\**",
-                "C:\\Users\\Jura\\Documents\\Arduino\\libraries\\USB_Host_Shield_Library_2.0",
+                "C:\\Users\\Jura\\Documents\\Arduino\\libraries\\*",
                 "${workspaceRoot}"
             ],
             "forcedInclude": [

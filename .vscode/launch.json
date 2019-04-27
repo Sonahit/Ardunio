@@ -5,6 +5,28 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "node",
+            "request": "launch",
+            "name": "Arduino Node",
+            "program": "${workspaceFolder}/client/server.js",
+            "cwd": "${workspaceFolder}/client",
+            "env" :{"NODE_ENV": "development"},
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Arduino NPM",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+                "run-script",
+                "debug"
+            ],
+            "env" :{"NODE_ENV": "development"},
+            "port": 3000,
+            "cwd": "${workspaceFolder}/client",
+            "protocol": "inspector"
+        },
+        {
             "name": "Arduino",
             "type": "arduino",
             "request": "launch",
