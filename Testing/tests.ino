@@ -35,17 +35,12 @@ void loop()
         if(leds[i].getBrightness() <= 0 || leds[i].getBrightness() >= 255 ) 
         {
             leds[i].setFade(-leds[i].getFade());
-            delay(150);
         }
-    }
-    for(int i = 0; i < length; i++)
-    {
         JsonObject object = doc.to<JsonObject>();
         object["pin"] = leds[i].getPin();
         object["brightness"] = leds[i].getBrightness();
-        delay(20);
+        delay(10);
         serializeJson(object, Serial);
     }
-    
     delay(10);
 }

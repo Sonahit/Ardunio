@@ -14,7 +14,6 @@ port.on('data', data =>{
 
 module.exports = ({ arduino }) => {
     arduino.get('/', async (ctx, next) => {
-      console.log('i was here');
       ctx.body = str;
     })
 }
