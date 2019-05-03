@@ -4,6 +4,7 @@ const APP_DIR = path.resolve(`src/index.js`);
 const BUILD_DIR = path.resolve("dist");
 const config = require('../config/config');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
+const ManifestJSON = require('webpack-manifest-plugin');
 
 module.exports = {
     entry: {
@@ -56,6 +57,7 @@ module.exports = {
             template: path.resolve('public/index.html'),
             inject: true,
             hash: config.production ? true : false
-        })
+        }),
+        new ManifestJSON()
     ]
 }

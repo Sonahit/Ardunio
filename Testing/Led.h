@@ -4,6 +4,7 @@ class Led {
         int brightness;
         int fade;
     public:
+    Led();
     Led(int pin, int brightness);
     ~Led();
     void setBrightness(int brightness);

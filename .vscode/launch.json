@@ -7,10 +7,18 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Arduino Node",
+            "name": "Arduino development Node",
             "program": "${workspaceFolder}/client/server.js",
             "cwd": "${workspaceFolder}/client",
             "env" :{"NODE_ENV": "development"},
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Arduino prodtuction Node",
+            "program": "${workspaceFolder}/client/server.js",
+            "cwd": "${workspaceFolder}/client",
+            "env" :{"NODE_ENV": "production"},
         },
         {
             "type": "node",

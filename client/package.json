@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "cross-env NODE_ENV=production node server.js",
-    "build": "webpack --progress --hide-modules --config ./webpack/webpack.base.conf.js",
+    "build": "webpack --progress --hide-modules --config ./webpack/webpack.prod.conf.js",
     "debug": "node --nolazy --inspect=3000 ./server.js"
   },
   "keywords": [],
@@ -40,6 +40,7 @@
     "webpack-cli": "^3.3.1",
     "webpack-dev-middleware": "^3.6.2",
     "webpack-hot-client": "^4.1.1",
+    "webpack-manifest-plugin": "^2.0.4",
     "webpack-merge": "^4.2.1"
   },
   "dependencies": {

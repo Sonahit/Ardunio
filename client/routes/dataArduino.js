@@ -1,5 +1,5 @@
 const SerialPort = require('serialport');
-const port = new SerialPort('COM3', { baudRate: 115200 });
+const port = new SerialPort('COM3', { baudRate: 9600 });
 let str;
 // Read the port data
 port.on("open", () => {
@@ -14,6 +14,11 @@ port.on('data', data =>{
 
 module.exports = ({ arduino }) => {
     arduino.get('/', async (ctx, next) => {
-      ctx.body = str;
+      ctx.body = str !== undefined ? str : "No data";
+      let json = JSON.stringify({
+        "pin" : parseInt(ctx.query.pin),
+        "brightness" : parseInt(ctx.query.brightness),
+      })
+      port.write(json+"\n");
     })
 }

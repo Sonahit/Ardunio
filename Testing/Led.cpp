@@ -1,5 +1,12 @@
 #include  "Led.h"
 
+
+Led::Led()
+{
+
+}
+
+
 Led::Led(int pin, int brightness)
 {
     this -> pin = pin;

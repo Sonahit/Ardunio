@@ -1,15 +1,28 @@
 <template>
     <div>
         <ul>
-            <span @click = "setArdData" > Show pin brightness </span>
+            <button @click = "setArdData" > Show pin brightness </button>
             <ul>
                 <li v-for="(data, index) in sortedArray" :key="index" > 
                 Pin : {{ data.pin }} 
                 Brightness: {{ data.brightness }} 
                 </li>
             </ul> 
+            <select v-model="pin">
+                <option value="">Select one</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+            </select>
+            <br/>
+            <br/>
+            <input name="bright" type="range" v-model="brightness" min="0" max="255">
+            <label for="bright">Brightness {{brightness}}</label>
         </ul>
-        
+        {{ ardData }}
     </div>
 </template>
 
@@ -24,13 +37,10 @@
             return {
                 ardData : [],
                 interval : 0,
+                pin: "",
+                brightness: "0"
             }
         }, 
-        watch : {
-            ardData: function (val, oldVal) {
-                
-            }   
-        },
         computed: {
             sortedArray: function () {
                 function compare(a, b) {
@@ -46,12 +56,8 @@
         methods:
         {
             setArdData() {
-                if(this.interval)
-                {
-                    clearInterval(this.interval);
-                }
-                this.interval = setInterval( () => {
-                    this.getDataArduino().then(data => {
+                this.getDataArduino().then(data => {
+                    if(typeof data === "object"){
                         if (this.ardData.some(item => {
                         return item.pin === data.pin
                         })) 
@@ -69,15 +75,21 @@
                                 this.ardData.push(data);
                             }
                         }
-                    });
-                    
-                }, 30);
+                    }
+                });
             },
             getDataArduino()
             {
                 return axios.request({
                     url:"api/data",
                     baseURL: `http://localhost:${config.port}`,
+                    headers: {
+                        "Access-Control-Allow-Origin": "*",
+                    },
+                    params: {
+                        pin: this.pin,
+                        brightness: this.brightness
+                    }
                 }).then((resp) => {
                     return resp.data;
                 })
