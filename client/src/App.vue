@@ -56,43 +56,49 @@
         methods:
         {
             setArdData() {
-                this.getDataArduino().then(data => {
-                    if(typeof data === "object"){
-                        if (this.ardData.some(item => {
-                        return item.pin === data.pin
-                        })) 
-                        {
-                            this.ardData.forEach(item => {
-                                if(item.pin === data.pin)
-                                {
-                                    item.pin = data.pin;
-                                    item.brightness = data.brightness;
-                                }
-                            })
-                        } else {
-                            if(data.pin)
-                            {
-                                this.ardData.push(data);
+                if(this.interval){
+                    clearInterval(this.interval);
+                }
+                this.interval = setInterval( () => {
+                    this.getDataArduino().then(data => {
+                            if(typeof data === "object"){
+                                data = data.data;
+                                data.forEach(ledCheck => {
+                                    let index = this.ardData.findIndex(led => {
+                                        return led.pin === ledCheck.pin
+                                    })
+                                    if(index >= 0){
+                                        if(this.ardData[index].brightness !== ledCheck.brightness){
+                                            this.ardData.splice(index, index+1);
+                                            this.ardData.splice(index, index+1, ledCheck);  
+                                        }
+                                    } else {
+                                        if(ledCheck.pin !== 0 ){
+                                            this.ardData.push(ledCheck);
+                                        }
+                                    }
+                                })           
                             }
-                        }
-                    }
-                });
+                    }).catch(err => {
+                    })
+                }, 500);
             },
-            getDataArduino()
-            {
-                return axios.request({
-                    url:"api/data",
-                    baseURL: `http://localhost:${config.port}`,
-                    headers: {
-                        "Access-Control-Allow-Origin": "*",
-                    },
-                    params: {
-                        pin: this.pin,
-                        brightness: this.brightness
-                    }
-                }).then((resp) => {
-                    return resp.data;
-                })
+            getDataArduino(){
+                    return axios.request({
+                        url:"api/data",
+                        baseURL: `http://${window.location.hostname}:${config.port}`,
+                        headers: {
+                            "Access-Control-Allow-Origin": "*",
+                        },
+                        params: {
+                            pin: this.pin,
+                            brightness: this.brightness
+                        }
+                    }).then((resp) => {
+                        return resp.data;
+                    }).catch(err => {
+
+                    })
             }
         }
     }
